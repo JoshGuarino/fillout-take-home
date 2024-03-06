@@ -17,11 +17,13 @@ app.get('/:formId/filteredResponses', async (req, res) => {
         await getFormSubmissions(req.params.formId, queries), 
         filters
     )
+    const limit = req.query.limit ? Number(req.query.limit) : 150
+    const offset = req.query.offset ? Number(req.query.offset) : 0
 
     res.json({
-        responses: filteredResponses,
+        responses: filteredResponses.slice(offset, offset+limit),
         totalResponses: filteredResponses.length,
-        pageCount: 1
+        pageCount: Math.ceil(filteredResponses.length/limit) 
     })
 })
 
