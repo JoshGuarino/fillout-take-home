@@ -27,14 +27,14 @@ export type Submission = {
     submissionTime: Date
     lastUpdatedAt: Date
     questions: Question[]
-    calculations: [],
-    urlParameters: [],
-    quiz: {},
+    calculations: []
+    urlParameters: []
+    quiz: {}
     documents: []
 }
 
 export type FormSubmissions = {
-    responses: Submission[]    
+    responses: Submission[]
     totalResponses: number
     pageCount: number
 }
