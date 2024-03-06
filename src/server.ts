@@ -19,9 +19,10 @@ app.get('/:formId/filteredResponses', async (req, res) => {
     )
     const limit = req.query.limit ? Number(req.query.limit) : 150
     const offset = req.query.offset ? Number(req.query.offset) : 0
+    const responses = filteredResponses.slice(offset, offset + limit)
 
     res.json({
-        responses: filteredResponses.slice(offset, offset + limit),
+        responses: responses,
         totalResponses: filteredResponses.length,
         pageCount: Math.ceil(filteredResponses.length / limit)
     })
